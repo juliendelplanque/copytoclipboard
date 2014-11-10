@@ -1,0 +1,43 @@
+#!/bin/python3
+# -*- coding: utf-8 -*-
+""" Script that permit you to use the clipboard from command-line in a very
+    simple way. Since this is written in python 3, this script is platform
+    independent.
+    Dependency: pyperclip
+
+    Author: Julien Delplanque
+"""
+
+import sys
+import argparse
+import pyperclip as clipboard
+
+def main():
+    """ Main function of this program.
+    """
+    # Arguments parsing
+    parser = argparse.ArgumentParser(
+        description='Use the clipboard from cmd. The default input is stdin.')
+    parser.add_argument('-a', '--append', action='store_true',
+                       help='Append mode, will append the input to the clipboard.')
+    parser.add_argument('-i', '--input', dest='input', default=None,
+                       help='Store the parameter in the clipboard.')
+    parser.add_argument('-p', '--paste', action='store_true',
+                       help='Write the content of the clipboard in stdout.')
+    args = parser.parse_args()
+    # Clipboard manipulations
+    if args.paste:
+        print(clipboard.paste(), end='', flush=True)
+    else:
+        input_str = ""
+        if args.input == None:
+            input_str = sys.stdin.read()[0:-1]
+        else:
+            input_str = args.input
+
+        if args.append:
+            input_str = clipboard.paste() + input_str
+        clipboard.copy(input_str)
+
+if __name__ == '__main__':
+    main()
