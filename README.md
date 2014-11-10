@@ -12,7 +12,11 @@ $ pip install pyperlip
 ~~~
 
 * Clone this repository
-* Add the repository to your path in your ~/.bashrc or ~/.zshrc
+* Add the repository to your path in your ~/.bashrc or ~/.zshrc:
+
+~~~
+export PATH="$PATH:/path/to/copytoclipboard"
+~~~
 
 Enjoy!
 
