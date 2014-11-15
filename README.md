@@ -8,7 +8,7 @@ A small tool to copy things from the command line to the clipboard.
 * Install *pyperclip*
 
 ~~~
-$ pip install pyperlip
+$ pip install pyperclip
 ~~~
 
 * Clone this repository
